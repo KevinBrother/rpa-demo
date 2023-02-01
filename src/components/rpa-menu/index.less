@@ -1,0 +1,49 @@
+.rpa-menu {
+  padding-top: 20px;
+  background-color: pink;
+
+  ul,
+  li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  ul {
+    display: flex;
+    padding: 20px 20px 0;
+    background-color: pink;
+  }
+
+  li {
+    width: 60px;
+    height: 60px;
+    background: #fff;
+  }
+
+  li > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: pink;
+  }
+
+  .active {
+    background-color: pink;
+  }
+
+  .active > div {
+    background: #fff;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .active + li > div {
+    border-radius: 0 0 0 10px;
+  }
+
+  .active-prev > div {
+    border-radius: 0 0 10px;
+  }
+}
