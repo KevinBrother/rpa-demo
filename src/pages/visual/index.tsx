@@ -6,18 +6,18 @@ export default function Visual() {
     const insertFlag = document.createElement('div');
     insertFlag.classList.add('insert-flag');
 
-    const list = document.querySelector('.list') as HTMLDListElement;
+    const list = document.querySelector('.list') as HTMLElement;
     let sourceNode; // movingNode
     let targetNode; //
 
-    list.ondragstart = (e: Event) => {
+    list.ondragstart = (e) => {
       console.log('%c [ e ]-54', 'font-size:13px; background:pink; color:#bf2c9f;', e);
       // setTimeout 异步 为了解决被拖动的元素样式，会是原来的元素被拖动瞬间的样式
       setTimeout(() => {
-        e.target.classList.add('moving');
+        (e.target as Element).classList.add('moving');
       }, 0);
       sourceNode = e.target;
-      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer!.effectAllowed = 'move';
     };
 
     list.ondragover = (e) => {
@@ -26,7 +26,7 @@ export default function Visual() {
 
     list.ondragenter = (e) => {
       e.preventDefault();
-      const target = e.target;
+      const target = e.target as Element;
       if (target === list || target === insertFlag) {
         return;
       }
@@ -54,7 +54,7 @@ export default function Visual() {
     };
 
     list.ondragend = (e) => {
-      e.target.classList.remove('moving');
+      (e.target as Element).classList.remove('moving');
       if (sourceNode === targetNode) {
         return;
       }
